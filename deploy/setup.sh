@@ -13,7 +13,7 @@ locale-gen en_GB.UTF-8
 # Install Python, SQLite and pip
 echo "Installing dependencies..."
 sudo apt-get update
-sudo apt-get install -y python3-dev python3-venv sqlite3  django python3-pip supervisor nginx git
+sudo apt-get install -y python3-dev python3-venv sqlite3  django==2.2 djangorestframework==3.9.2 python3-pip supervisor nginx git
 
 mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
