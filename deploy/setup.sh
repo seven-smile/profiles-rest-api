@@ -13,7 +13,29 @@ locale-gen en_GB.UTF-8
 # Install Python, SQLite and pip
 echo "Installing dependencies..."
 sudo apt-get update
-sudo apt-get install -y python3-dev python3-venv sqlite3  python3-pip supervisor nginx git
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+python3-dev python3-venv sqlite3 python3-pip supervisor nginx git
+
+# Install pyenv
+curl https://pyenv.run | bash
+
+# Add pyenv to bashrc
+echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+# Reload bashrc
+source ~/.bashrc
+
+# Install specific Python version using pyenv
+pyenv install 3.10.12
+pyenv global 3.10.12
+
+# Create project directory and clone the repository
+
 
 mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
