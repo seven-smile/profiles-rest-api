@@ -7,7 +7,7 @@ PROJECT_GIT_URL='https://github.com/seven-smile/profiles-rest-api.git'
 
 PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
-# Set Ubuntu Language
+# Set Ubuntu Language 
 locale-gen en_GB.UTF-8
 echo ""
 
