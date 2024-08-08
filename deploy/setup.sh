@@ -20,7 +20,7 @@ echo ""
 if [ -d "$PROJECT_BASE_PATH" ]; then
     echo "Directory exists"
     echo ""
-    sudo rmdir "$PROJECT_BASE_PATH"
+    sudo rm -rf "$PROJECT_BASE_PATH"
 fi
 
 mkdir -p $PROJECT_BASE_PATH
