@@ -27,7 +27,7 @@ git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 python3 -m venv $PROJECT_BASE_PATH/env
 source $PROJECT_BASE_PATH/env/bin/activate
 
-$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
+$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt setuptools
 
 # Run migrations
 $PROJECT_BASE_PATH/env/bin/python $PROJECT_BASE_PATH/manage.py migrate
