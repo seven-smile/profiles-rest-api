@@ -10,43 +10,26 @@ PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 # Set Ubuntu Language
 locale-gen en_GB.UTF-8
 
-# Install prerequisites for pyenv and other dependencies
+# Install Python, SQLite and pip
 echo "Installing dependencies..."
-sudo apt-get update
-sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-python3-dev python3-venv sqlite3 python3-pip supervisor nginx git
+apt-get update
+apt-get install -y python3-dev python3-venv sqlite python-pip supervisor nginx git
 
-# Install pyenv
-curl https://pyenv.run | bash
-
-# Add pyenv to bashrc
-echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-
-# Reload bashrc
-source ~/.bashrc
-
-# Install specific Python version using pyenv
-pyenv install 3.10.12
-pyenv global 3.10.12
-
-# Create project directory and clone the repository
 mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
-# Create and activate virtual environment using the specific Python version
-python -m venv $PROJECT_BASE_PATH/env
-source $PROJECT_BASE_PATH/env/bin/activate
+#create virtual environment
+mkdir -p $PROJECT_BASE_PATH/env
+python3 -m venv $PROJECT_BASE_PATH/env
 
-# Install Python packages from requirements.txt
-$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
+$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
+$PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.21
+
 
 # Run migrations
-$PROJECT_BASE_PATH/env/bin/python $PROJECT_BASE_PATH/manage.py migrate
+cd $PROJECT_BASE_PATH
+$PROJECT_BASE_PATH/env/bin/python manage.py migrate
+$PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Setup Supervisor to run our uwsgi process.
 cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
