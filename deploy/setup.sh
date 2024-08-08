@@ -5,7 +5,7 @@ set -e
 # TODO: Set to URL of git repo.
 PROJECT_GIT_URL='https://github.com/seven-smile/profiles-rest-api.git'
 
-PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api' 
+PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
 # Set Ubuntu Language
 locale-gen en_GB.UTF-8
@@ -14,7 +14,7 @@ echo ""
 # Install Python, SQLite and pip
 echo "Installing dependencies..."
 sudo apt-get update
-sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git build-essential libssl-dev gcc uwsgi-plugin-python3
+sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git build-essential libssl-dev gcc uwsgi-plugin-python3 python3-distutils
 echo ""
 
 if [ -d "$PROJECT_BASE_PATH" ]; then
