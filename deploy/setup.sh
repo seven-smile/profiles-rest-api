@@ -15,9 +15,9 @@ echo "Installing dependencies..."
 sudo apt-get update
 sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git build-essential libssl-dev gcc uwsgi-plugin-python3
 
-if [-d $PROJECT_BASE_PATH]; then
+if [ -d "$PROJECT_BASE_PATH" ]; then
     echo "Directory exists"
-    sudo rm -rf $PROJECT_BASE_PATH
+    sudo rmdir "$PROJECT_BASE_PATH"
 fi
 
 mkdir -p $PROJECT_BASE_PATH
