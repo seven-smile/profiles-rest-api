@@ -17,6 +17,7 @@ sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor 
 sudo apt-get install build-essential python3-dev libssl-dev
 
 if [-d $PROJECT_BASE_PATH]; then
+    echo "Directory exists"
     sudo rm -rf $PROJECT_BASE_PATH
 fi
 
