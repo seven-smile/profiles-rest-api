@@ -16,7 +16,7 @@ echo "Installing dependencies..."
 sudo apt-get update
 sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git build-essential libssl-dev gcc uwsgi-plugin-python3
 echo ""
- 
+
 if [ -d "$PROJECT_BASE_PATH" ]; then
     echo "Directory exists"
     echo ""
@@ -33,10 +33,11 @@ python3 -m venv $PROJECT_BASE_PATH/env
 echo ""
 
 export PATH=$PATH:$PROJECT_BASE_PATH/env/bin
+echo "PATH: $PATH"
 
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
 # $PROJECT_BASE_PATH/env/bin/pip install uwsgi
-echo ""
+$PROJECT_BASE_PATH/env/bin/pip list
 
 
 # Run migrations
