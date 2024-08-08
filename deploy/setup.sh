@@ -13,7 +13,7 @@ locale-gen en_GB.UTF-8
 # Install Python, SQLite and pip
 echo "Installing dependencies..."
 apt-get update
-apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git
+apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git uwsgi-plugin-python3 
 
 if [ -d "$PROJECT_BASE_PATH" ]; then
     echo "Directory exists"
@@ -26,7 +26,7 @@ git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 python3 -m venv $PROJECT_BASE_PATH/env
 
-$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt uwsgi==2.0.21
+$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
 
 # Run migrations
 $PROJECT_BASE_PATH/env/bin/python $PROJECT_BASE_PATH/manage.py migrate
