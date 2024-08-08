@@ -16,6 +16,9 @@ sudo apt-get update
 sudo apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git
 sudo apt-get install build-essential python3-dev libssl-dev
 
+if [-d $PROJECT_BASE_PATH]; then
+    sudo rm -rf $PROJECT_BASE_PATH
+fi
 
 mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
@@ -25,7 +28,7 @@ mkdir -p $PROJECT_BASE_PATH/env
 python3 -m venv $PROJECT_BASE_PATH/env
 
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
-$PROJECT_BASE_PATH/env/bin/pip install uwsgi --no-cache-dir --no-use-pep517
+$PROJECT_BASE_PATH/env/bin/pip install uwsgi=="2.0.21"
 
 
 # Run migrations
