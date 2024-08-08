@@ -30,7 +30,7 @@ echo ""
 #create virtual environment
 mkdir -p $PROJECT_BASE_PATH/env
 python3 -m venv $PROJECT_BASE_PATH/env
-echo ""
+echo "" 
 
 export PATH=$PATH:$PROJECT_BASE_PATH/env/bin
 echo "PATH: $PATH"
