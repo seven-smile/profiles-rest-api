@@ -30,10 +30,8 @@ echo ""
 #create virtual environment
 mkdir -p $PROJECT_BASE_PATH/env
 python3 -m venv $PROJECT_BASE_PATH/env
-echo "" 
-
-export PATH=$PATH:$PROJECT_BASE_PATH/env/bin
-echo "PATH: $PATH"
+source $PROJECT_BASE_PATH/env/bin/activate
+echo ""
 
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
 # $PROJECT_BASE_PATH/env/bin/pip install uwsgi
@@ -42,6 +40,7 @@ $PROJECT_BASE_PATH/env/bin/pip list
 
 # Run migrations
 cd $PROJECT_BASE_PATH
+pwd
 $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 echo ""
