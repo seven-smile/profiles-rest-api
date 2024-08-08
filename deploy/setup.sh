@@ -22,7 +22,7 @@ git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 mkdir -p $PROJECT_BASE_PATH/env
 python3 -m venv $PROJECT_BASE_PATH/env
 
-$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
+$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
 $PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.21
 
 
